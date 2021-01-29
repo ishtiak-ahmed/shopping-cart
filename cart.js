@@ -3,24 +3,36 @@ let CartData = {
     iphonePrice: 1219,
     casing: 1,
     casingPrice: 59,
-    total: 1278
+    total:
+        function () {
+            return this.iphone * this.iphonePrice + this.casing * this.casingPrice
+            this.total;
+        },
+    tax: function () {
+        return Math.round(this.total() * .1);
+    }
 }
-function total() {
-    let total = CartData.iphone * CartData.iphonePrice + CartData.casing * CartData.casingPrice
-    CartData.total = total;
-};
-// console.log(total);
+
 
 function updateCart() {
     // Update Phone count
     const iphoneCount = document.getElementById('iphoneCount');
     const caseCount = document.getElementById('caseCount');
     const phonePrice = document.getElementById('phonePrice')
-    const casePrice = document.getElementById('casePrice')
+    const casePrice = document.getElementById('casePrice');
+    const subTotal = document.getElementById('subTotal');
+    const total = document.getElementById('total');
+    const tax = document.getElementById('tax');
+
+    CartData.total();
+    CartData.tax();
     iphoneCount.value = CartData.iphone;
     caseCount.value = CartData.casing;
     phonePrice.innerText = (CartData.iphonePrice * CartData.iphone);
     casePrice.innerText = (CartData.casingPrice * CartData.casing);
+    subTotal.innerText = CartData.total();
+    tax.innerText = CartData.tax();
+    total.innerText = (CartData.total() + CartData.tax());
     // 
 }
 function updatePhone(number) {
@@ -34,7 +46,6 @@ let iphoneReduce = document.querySelector('.iphone .minus');
 iphoneReduce.addEventListener('click', function () {
     if (CartData.iphone > 0) {
         CartData.iphone -= 1;
-        total();
         updateCart();
     }
     else {
@@ -46,7 +57,6 @@ let caseMinus = document.querySelector('.casing .minus');
 caseMinus.addEventListener('click', function () {
     if (CartData.casing > 0) {
         CartData.casing -= 1;
-        total();
         updateCart();
     }
     else {
@@ -57,14 +67,12 @@ caseMinus.addEventListener('click', function () {
 let iphonePlus = document.querySelector('.iphone .plus');
 iphonePlus.addEventListener('click', function () {
     CartData.iphone += 1;
-    total();
     updateCart();
 });
 // Case Plus count
 let casePlus = document.querySelector('.casing .plus');
 casePlus.addEventListener('click', function () {
     CartData.casing += 1;
-    total();
     updateCart();
 });
 
