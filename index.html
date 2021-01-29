@@ -29,7 +29,10 @@
 
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner iphone">
-                    <button class="btn btn-default minus">
+                    <button
+                      class="btn btn-default minus"
+                      onclick="updatePhoneCount(false)"
+                    >
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
@@ -38,7 +41,10 @@
                       value="1"
                       id="iphoneCount"
                     />
-                    <button class="btn btn-default plus">
+                    <button
+                      class="btn btn-default plus"
+                      onclick="updatePhoneCount(true)"
+                    >
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
@@ -56,7 +62,10 @@
                 </div>
                 <div class="col-md-5 center-item">
                   <div class="input-group number-spinner casing">
-                    <button class="btn btn-default minus">
+                    <button
+                      class="btn btn-default minus"
+                      onclick="updateCaseCount(false)"
+                    >
                       <i class="fas fa-minus"></i>
                     </button>
                     <input
@@ -65,7 +74,10 @@
                       value="1"
                       id="caseCount"
                     />
-                    <button class="btn btn-default plus">
+                    <button
+                      class="btn btn-default plus"
+                      onclick="updateCaseCount(true)"
+                    >
                       <i class="fas fa-plus"></i>
                     </button>
                   </div>
